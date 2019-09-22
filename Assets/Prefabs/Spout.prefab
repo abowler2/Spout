@@ -232,6 +232,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   sprayKey: 0
+  dropPrefab: {fileID: 6681497477162602466, guid: 0239c13f005db4e23b04a4f69f4c84ff,
+    type: 3}
+  SpawnPoint: {fileID: 6745286292457498354}
 --- !u!1 &3060155726047081255
 GameObject:
   m_ObjectHideFlags: 0
