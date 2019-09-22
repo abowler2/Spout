@@ -4,15 +4,21 @@ using UnityEngine;
 
 public class Spout : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
+    [SerializeField]
+    private KeyCode sprayKey = KeyCode.Space;
+    [SerializeField]
+    private GameObject dropPrefab;
+
+    private void Update {
+
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
+    private void Start {
+
+    }
+
+    private void OnEnable {
+
     }
 }
+
