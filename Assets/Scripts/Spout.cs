@@ -16,7 +16,7 @@ public class Spout : MonoBehaviour
     private Transform SpawnPoint;
 
     [SerializeField]
-    private float spoutPower = 4.0f;
+    private float spoutPower = 5.0f;
 
     [SerializeField]
     private float dirRandomness = 5.0f;
