@@ -15,6 +15,12 @@ public class Spout : MonoBehaviour
     [SerializeField]
     private Transform SpawnPoint;
 
+    [SerializeField]
+    private float spoutPower = 4.0f;
+
+    [SerializeField]
+    private float dirRandomness = 5.0f;
+
     private void Update() {
         if(Input.GetKey(sprayKey)) {
             Spray();
@@ -25,33 +31,28 @@ public class Spout : MonoBehaviour
     {
         GameObject go = Instantiate(dropPrefab, SpawnPoint.position, Quaternion.identity);
 
-        Color newColor = new Color(
-            UnityEngine.Random.Range(0.0f, 1.0f),
-            UnityEngine.Random.Range(0.0f, 1.0f),
-            UnityEngine.Random.Range(0.0f, 1.0f),
-            UnityEngine.Random.Range(0.0f, 1.0f)
-            );
 
-        Color newEmissionColor = new Color(
-            UnityEngine.Random.Range(0.0f, 1.0f),
-            UnityEngine.Random.Range(0.0f, 1.0f),
-            UnityEngine.Random.Range(0.0f, 1.0f),
-            UnityEngine.Random.Range(0.0f, 1.0f)
-            );
-
-        go.GetComponent<Renderer>().material.SetColor("_Color", newColor);
-        go.GetComponent<Renderer>().material.SetColor("_EmissionColor", newEmissionColor);
+        go.GetComponent<Renderer>().material.SetColor("_Color", RandColor());
+        go.GetComponent<Renderer>().material.SetColor("_EmissionColor", RandColor());
 
 
-        go.GetComponent<Rigidbody>().velocity = transform.up * 5.0f;
+        go.GetComponent<Rigidbody>().velocity = (transform.up * spoutPower) + RandDirection();
     }
 
-    private void Start() {
-
-  }
-
-   private void OnEnable() {
-
-   }
+    private Vector3 RandDirection() {
+        return new Vector3(
+            UnityEngine.Random.Range(-dirRandomness, dirRandomness),
+            0,
+            UnityEngine.Random.Range(-dirRandomness, dirRandomness)
+        );
+    }
+    private Color RandColor() {
+     return new Color(
+        UnityEngine.Random.value,
+        UnityEngine.Random.value,
+        UnityEngine.Random.value,
+        UnityEngine.Random.value
+        );
+ }
 }
 
